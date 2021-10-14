@@ -28,9 +28,16 @@ window.onload = function() {
 function playGame(){
   // *CODE GOES BELOW HERE *
   let numberGuess = document.getElementById('number-guess').value;
-  displayResult(numberGuess);
-  saveGuessHistory(numberGuess);
-  displayHistory();
+  // Validation if we enter a null value
+  if(numberGuess == null || numberGuess == "")
+  {
+    alert("Please enter a number");
+  }else {
+    document.getElementById('number-guess').value = "";
+    displayResult(numberGuess);
+    saveGuessHistory(numberGuess);
+    displayHistory();
+  }
 }
 /**
  * Show the result for if the guess it too high, too low, or correct
@@ -41,6 +48,7 @@ function playGame(){
 function displayResult(numberGuess) {
   if (numberGuess == correctNumber) {
     showYouWon();
+    document.getElementById("number-submit").style.display = "none";
   } else if ( numberGuess < correctNumber){
     showNumberBelow();
   } else {
@@ -54,6 +62,11 @@ function displayResult(numberGuess) {
  */
 function initGame(){
   // *CODE GOES BELOW HERE *
+  document.getElementById("number-submit").style.display = "";
+  correctNumber = getRandomNumber();
+  document.getElementById("result").innerHTML = "";
+  guesses = [];
+  displayHistory();  
 }
 
 /**
@@ -61,6 +74,7 @@ function initGame(){
  */
 function resetResultContent(){
   document.getElementById("result").innerHTML = "";
+  document.getElementById("history").innerHTML = "";
 }
 
 /**
