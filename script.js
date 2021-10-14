@@ -84,7 +84,6 @@ function resetResultContent(){
 function getRandomNumber(){
   // *CODE GOES BELOW HERE *
   let randomNumber = Math.floor(Math.random() * 100 + 1);
-  console.log('Random Number '+ randomNumber);
   return randomNumber;
 }
 
